@@ -27,6 +27,5 @@ use	ExtUtils::MakeMaker;
 WriteMakefile(
 	VERSION_FROM	=> "Simple.pm",
 	NAME	 	=> "Log::Simple",
-	DISTNAME	=> "Log-Simple",
 	AUTHOR		=> 'Samuel Moun\'s Mouniée <mouns@cpan.org>'
 );

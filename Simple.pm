@@ -1,6 +1,6 @@
 # -*- cperl -*-
 #
-# Copyright (c) 1997-2002 Samuel MOUNIEE
+# Copyright (c) 1997-2003 Samuel MOUNIEE
 #
 #    This file is part of Log::Simple.
 #
@@ -28,7 +28,7 @@ use	vars qw( $VERSION @ISA @EXPORT @EXPORT_OK );
 
 use	Exporter;
 
-( $VERSION ) = '$Revision: 1.2 $ ' =~ /\$Revision:\s+([^\s]+)/;
+( $VERSION ) = '$Revision: 1.3 $ ' =~ /\$Revision:\s+([^\s]+)/;
 
 
 @ISA		= qw( Exporter );
