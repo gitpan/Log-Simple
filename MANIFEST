@@ -1,5 +1,7 @@
+html/docs.css
+lib/Log/Simple.pm
 Makefile.PL
-MANIFEST
+MANIFEST			This list of files
 README
-Simple.pm
-test.pl
+t/Dummy.t
+META.yml                                 Module meta-data (added by MakeMaker)

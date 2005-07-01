@@ -1,31 +1,11 @@
-# -*- cperl -*-
-#
-# Copyright (c) 2001-2002 Samuel    MOUNIEE
-#
-#    This file is part of Log::Simple.
-#
-#    This program is part of the GNU project, released under the aegis of GNU
-#
-#    Log::Simple is free software; you can redistribute it and/or modify
-#    it under the terms of the GNU General Public License as published by
-#    the Free Software Foundation; either version 2 of the License, or
-#    (at your option) any later version.
-#
-#    Log::Simple is distributed in the hope that it will be useful,
-#    but WITHOUT ANY WARRANTY; without even the implied warranty of
-#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#    GNU General Public License for more details.
-#
-#    You should have received a copy of the GNU General Public License
-#    along with Log::Simple; if not, write to the Free Software
-#    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
-#
-
-use	ExtUtils::MakeMaker;
-
-
+use ExtUtils::MakeMaker;
+# See lib/ExtUtils/MakeMaker.pm for details of how to influence
+# the contents of the Makefile that is written.
 WriteMakefile(
-	VERSION_FROM	=> "Simple.pm",
-	NAME	 	=> "Log::Simple",
-	AUTHOR		=> 'Samuel Moun\'s Mouniée <mouns@cpan.org>'
+    'NAME'        => 'Log::Simple',
+    'VERSION_FROM'    => 'lib/Log/Simple.pm', # finds $VERSION
+    'PREREQ_PM'        => {}, # e.g., Module::Name => 1.1
+    ($] >= 5.005 ?    ## Add these new keywords supported since 5.005
+      (ABSTRACT_FROM => 'lib/Log/Simple.pm', # retrieve abstract from module
+       AUTHOR     => 'Mark Swayne <mark.swayne@charter.net>') : ()),
 );
