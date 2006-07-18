@@ -1,7 +1,5 @@
-Log::Simple version 1.00
-====================
-
-Log::Simple is a simple logfile management library intended to ease the burden of managing logfiles.
+Log::Simple version 1.x
+======================
 
 INSTALLATION
 
@@ -14,12 +12,25 @@ To install this module type the following:
 
 DEPENDENCIES
 
-This module requires only the standard modules and libraries that ship with perl.
+This module requires these other modules and libraries:
+
+  none
 
 COPYRIGHT AND LICENCE
 
-Copyright (C) 2002, 2005 Mark Swayne
-Copyright (C) 2005 Zydax, LLC
+Copyright (c) 1997-2006 Samuel MOUNIEE aka Moun's, mouns@cpan.org
 
-This library is free software, and may be distributed under the same terms as Perl.
+This file is part of Log::Simple.
 
+Log::Simple is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; version 2 of the License.
+
+Log::Simple is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with Log::Simple ; if not, write to the Free Software
+Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
