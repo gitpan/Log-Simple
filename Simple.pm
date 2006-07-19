@@ -27,7 +27,7 @@ use	vars qw( $VERSION @ISA @EXPORT @EXPORT_OK );
 
 use	Exporter;
 
-( $VERSION ) = '$Revision: 1.7 $ ' =~ /\$Revision:\s+([^\s]+)/;
+( $VERSION ) = '$Revision: 1.8 $ ' =~ /\$Revision:\s+([^\s]+)/;
 
 
 @ISA		= qw( Exporter );
@@ -48,22 +48,48 @@ Log::Simple - Basic runtime logger
 
 =head1	SYNOPSIS
 
-  use Log::Simple ( 1 );
+  use Log::Simple ( 6 );
 
+  set_logger( 2, sub { print join ( "", @_, "\n") } );
 
-  logger( 1, "toto" );
+  set_logger( 3, sub { print "$_\n" for @_ } );
 
-  logger( 2, "tata", $tutu, "kiki" );
+  logger( 1, "hello" );
+
+  logger( 7, "this", $message, "never appears" );
+
+  logger( 2, "this", "message", "will", "be", "printed", "without", "space" );
+
+  logger( 3, "this", "message", "will", "be", "printed", "a", "word", "by", "line" );
+
+  package	My::Example;
+
+  use	Log::Simple ( 7 );
+
+  logger( 7, "this message appears" );
+
+  set_local_logger( 3, sub { print join ( "", @_, "too\n") } );
+
+  logger( 2, "this", "message", "will", "be", "printed", "without", "space" );
+
+  logger( 3, "this", "message", "will", "be", "printed", "without", "space" );
 
 
 =head1	DESCRIPTION
+
+
+
+
+
+
+
 
 =head2	External Functions
 
 
 =over	4
 
-=item	logger
+=item	logger( $level, @messages )
 
 log informations
 
@@ -83,7 +109,7 @@ sub	logger {
 	return $LOGGER->{$cllpkg}->[0]->( @_ )
 		if ref( $LOGGER->{$cllpkg}->[0] ) eq "CODE";
 
-	return	stdlogger( @_ );
+	return	std_logger( @_ );
   }
   return -1;
 }
@@ -91,9 +117,9 @@ sub	logger {
 
 =pod
 
-=item	set_logger
+=item	set_logger ( $level , $callback )
 
-install an generic Logger
+Install an generic Logger. 
 
 =cut
 sub	set_logger($&) {
@@ -107,9 +133,9 @@ sub	set_logger($&) {
 
 =pod
 
-=item	set_local_logger
+=item	set_local_logger ( $level , $callback )
 
-install an local Logger
+install an local Logger.
 
 =cut
 sub	set_local_logger($&) {
@@ -119,7 +145,7 @@ sub	set_local_logger($&) {
 
   $level	= -1	if $level < 0;
 
-  $LOGGER->{$cllpkg} = [ \&stdlogger ]
+  $LOGGER->{$cllpkg} = [ \&std_logger ]
 	unless	defined( $LOGGER->{$cllpkg} );
 
   $LOGGER->{$cllpkg}->[$level+1] = $code;
@@ -134,7 +160,7 @@ sub	set_local_logger($&) {
 
 =over	4
 
-=item	std_logger
+=item	std_logger( @messages )
 
 log information to STDERR
 
@@ -154,6 +180,13 @@ sub	std_logger {
 }
 
 
+
+=pod
+
+=item	time_track( )
+
+callback which permit to timestamp messages.
+=cut
 sub	time_track
 {
   Log::Simple::std_logger( "time_track", time(), ( caller ) )
